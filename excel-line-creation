@@ -1,0 +1,26 @@
+Sub InsertBlankRowsBasedOnCellValue()
+
+    Dim Col As Variant
+    Dim BlankRows As Long
+    Dim LastRow As Long
+    Dim R As Long
+    Dim StartRow As Long
+
+        Col = "B"
+        StartRow = 1
+        BlankRows = 1
+
+            LastRow = Cells(Rows.Count, Col).End(xlUp).Row
+
+            Application.ScreenUpdating = False
+
+            With ActiveSheet
+For R = LastRow To StartRow + 1 Step -1
+If .Cells(R, Col) = "200" Then
+.Cells(R + 1, Col).EntireRow.Insert Shift:=xlDown
+End If
+Next R
+End With
+Application.ScreenUpdating = True
+
+End Sub
